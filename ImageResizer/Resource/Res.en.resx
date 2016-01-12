@@ -219,14 +219,41 @@
   <data name="dialog_auto_output_folder_input_err" xml:space="preserve">
     <value>Input error doesn't exist!</value>
   </data>
+  <data name="dialog_backgroud_error_caption" xml:space="preserve">
+    <value>Error Ocurred</value>
+  </data>
+  <data name="dialog_backgroud_error_full" xml:space="preserve">
+    <value>Something failed. Work operation returned an error</value>
+  </data>
+  <data name="dialog_cannot_create_out_dir_caption" xml:space="preserve">
+    <value>Unable to create output folder</value>
+  </data>
+  <data name="dialog_cannot_create_out_dir_full" xml:space="preserve">
+    <value>Output directory could not be created. Path is incorrect!</value>
+  </data>
+  <data name="dialog_currImgLabel_success" xml:space="preserve">
+    <value>Operation was succesfully completed</value>
+  </data>
   <data name="dialog_default_output_exists" xml:space="preserve">
-    <value>Defualt folder exists. An index was added.</value>
+    <value>Default folder exists. An index was added.</value>
   </data>
   <data name="dialog_default_output_folder" xml:space="preserve">
     <value>Processed Images</value>
   </data>
   <data name="dialog_default_output_folder_with_index" xml:space="preserve">
     <value>Processed Images {0}</value>
+  </data>
+  <data name="dialog_input_directory_not_exists_caption" xml:space="preserve">
+    <value>Incorrect input directory</value>
+  </data>
+  <data name="dialog_input_directory_not_exists_full" xml:space="preserve">
+    <value>Input directory does not exist</value>
+  </data>
+  <data name="dialog_output_directory_exists_caption" xml:space="preserve">
+    <value>Output directory exists</value>
+  </data>
+  <data name="dialog_output_directory_exists_full" xml:space="preserve">
+    <value>Output directory exists. Please select a new one</value>
   </data>
   <data name="dialog_release_notes_missing" xml:space="preserve">
     <value>Unable to locate release notes file</value>

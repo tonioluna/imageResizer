@@ -391,6 +391,7 @@ namespace ImageResizer
                         index++;
                     }
                     this.OutputFolderWarningLabel.Text = this.get_lang_string("dialog_default_output_exists");
+                    this.OutputFolderWarningLabel.ForeColor = Color.FromKnownColor(KnownColor.Orange);
                 }
                 else
                 {
@@ -402,6 +403,7 @@ namespace ImageResizer
             else
             {
                 this.OutputFolderWarningLabel.Text = this.get_lang_string("dialog_auto_output_folder_input_err");
+                this.OutputFolderWarningLabel.ForeColor = Color.FromKnownColor(KnownColor.Red);
             }
 
         }

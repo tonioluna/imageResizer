@@ -43,14 +43,20 @@ namespace ImageResizer
             if (!Directory.Exists(conversion_params.input_folder))
             {
                 log.error("Input directory '{0}' does not exist", conversion_params.input_folder);
-                MessageBox.Show("Input directory does not exist!", "Incorrect input directory", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(String.Format("{0}:\r\n{1}", this.get_lang_string("dialog_input_directory_not_exists_full"), conversion_params.input_folder),
+                    this.get_lang_string("dialog_input_directory_not_exists_caption"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;    // Mark result on GUI as operation canceled
                 return;
             }
             log.info("Input folder: {0}", conversion_params.input_folder);
             if (Directory.Exists(conversion_params.output_folder))
             {
-                log.error("Output directory '{0}' exist.", conversion_params.input_folder);
-                MessageBox.Show("Output directory does exists!\r\nPlease select another folder.", "Output directory exists!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                log.error("Output directory '{0}' exist.", conversion_params.output_folder);
+                MessageBox.Show(String.Format("{0}:\r\n{1}", this.get_lang_string("dialog_output_directory_exists_full"), conversion_params.output_folder),
+                    this.get_lang_string("dialog_output_directory_exists_caption"),
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                e.Cancel = true;    // Mark result on GUI as operation canceled
                 return;
             }
             log.info("Output folder: {0}", conversion_params.output_folder);
@@ -71,7 +77,10 @@ namespace ImageResizer
                 {
                     log.error("Unable to create output folder");
                     log.debug(ex.ToString());
-                    MessageBox.Show("Output directory could not be created. Path is incorrect!", "Unable to create output folder", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(this.get_lang_string("dialog_cannot_create_out_dir_full"),
+                        this.get_lang_string("dialog_cannot_create_out_dir_caption"),
+                        MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                     return;
                 }
                 log.debug("Output folder succesfully created");
@@ -151,14 +160,13 @@ namespace ImageResizer
             {
                 if (e.Result == null)
                 {
-                    currentImgLabel.Text = "Operation was succesfully completed";
+                    currentImgLabel.Text = get_lang_string("dialog_currImgLabel_success");
                 }
                 else
                 {
                     log.error("Got an error from the worker thread: {0}", e.Result as string);
-                    MessageBox.Show("Something failed. Work operation returned an error:\r\n" +
-                        e.Result as string,
-                        "Error Ocurred",
+                    MessageBox.Show(String.Format("{0}:\r\n{1}", this.get_lang_string("dialog_backgroud_error_full"), e.Result as string),
+                        this.get_lang_string("dialog_backgroud_error_caption"),
                        MessageBoxButtons.OK,
                        MessageBoxIcon.Error);
                 }

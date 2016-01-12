@@ -1,6 +1,4 @@
-﻿#define TEST_PARAMS
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -26,7 +24,7 @@ namespace ImageResizer
             InitializeComponent();
 
             SimpleLogger.LogLevel level;
-#if TEST_PARAMS
+#if DEBUG
             test_params = true;
             level = SimpleLogger.LogLevel.debug;
 #else
@@ -34,15 +32,13 @@ namespace ImageResizer
             level = SimpleLogger.LogLevel.info;
 #endif
 
-
             log = new SimpleLogger("image_resizer.log", level);
 
             GuiInitialization();
 
-#if TEST_PARAMS
+#if DEBUG
             inputFolderTB.Text = @"C:\Users\tonio\Pictures\FotosDeLaVillaForExperiments";
             outputFolderTB.Text = @"C:\Users\tonio\Pictures\FotosDeLaVillaForExperiments\out";
-            setResizeMetdhod(ResizeMethod.Method.stretch);
 #endif
         }
 
