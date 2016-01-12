@@ -59,5 +59,12 @@ namespace ImageResizer.Properties {
                 resourceCulture = value;
             }
         }
+        
+        internal static System.Drawing.Bitmap Icon_PNG_150px {
+            get {
+                object obj = ResourceManager.GetObject("Icon_PNG_150px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

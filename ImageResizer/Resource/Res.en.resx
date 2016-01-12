@@ -120,13 +120,13 @@
   <data name="dialog_currImgLabel_canceled" xml:space="preserve">
     <value>Operation was canceled</value>
   </data>
-  <data name="dialog_startButton_cancel" xml:space="preserve">
+  <data name="gui_dialog_startButton_cancel" xml:space="preserve">
     <value>Cancel</value>
   </data>
-  <data name="dialog_startButton_cancelling" xml:space="preserve">
+  <data name="gui_dialog_startButton_cancelling" xml:space="preserve">
     <value>Cancelling</value>
   </data>
-  <data name="dialog_startButton_start" xml:space="preserve">
+  <data name="gui_dialog_startButton_start" xml:space="preserve">
     <value>Start</value>
   </data>
   <data name="dialog_worker_params_retr_err" xml:space="preserve">
@@ -165,6 +165,12 @@
   <data name="gui_profileLabel" xml:space="preserve">
     <value>Profile</value>
   </data>
+  <data name="gui_resizeInfoWindow" xml:space="preserve">
+    <value>Resize Methods Information</value>
+  </data>
+  <data name="gui_resizeMethodsHelpToolStripMenuItem" xml:space="preserve">
+    <value>Resize Methods Help</value>
+  </data>
   <data name="gui_showLoggerToolStripMenuItem" xml:space="preserve">
     <value>Show Logger</value>
   </data>
@@ -173,5 +179,68 @@
   </data>
   <data name="gui_widthLabel" xml:space="preserve">
     <value>Width</value>
+  </data>
+  <data name="method_desc_add_fill" xml:space="preserve">
+    <value>Resize image to fit on box keeping aspect ratio. Add filling margins to make up required size. Output image will always be the target dimensions.</value>
+  </data>
+  <data name="method_desc_cut_excess" xml:space="preserve">
+    <value>Resize image keeping aspect ratio until if fully covers the output box. Excess on one of its dimensions will be trimmed. Output image will be the target dimensions unless one of the image's dimensions is smaller than target.</value>
+  </data>
+  <data name="method_desc_fit_on_box" xml:space="preserve">
+    <value>Resize image to fit box keeping aspect ratio. Output image will be equal or smaller to target dimensions.</value>
+  </data>
+  <data name="method_desc_stretch_to_box" xml:space="preserve">
+    <value>Resize down image to fit box. Resize operation will independently reduce both dimensions to match target size. If source image is larger it won't be be grown. Output image will always be equal or smaller than target dimensions.</value>
+  </data>
+  <data name="method_short_add_fill" xml:space="preserve">
+    <value>Add Fill Margins</value>
+  </data>
+  <data name="method_short_cut_excess" xml:space="preserve">
+    <value>Cut Excess</value>
+  </data>
+  <data name="method_short_fit_on_box" xml:space="preserve">
+    <value>Fit on Box</value>
+  </data>
+  <data name="method_short_stretch_to_box" xml:space="preserve">
+    <value>Stretch to Box</value>
+  </data>
+  <data name="dialog_about_date_prefix" xml:space="preserve">
+    <value>Compiled on</value>
+  </data>
+  <data name="dialog_about_date_string_format" xml:space="preserve">
+    <value>MM/dd/yyyy HH:mm:ss</value>
+  </data>
+  <data name="dialog_about_publisher_prefix" xml:space="preserve">
+    <value>By</value>
+  </data>
+  <data name="dialog_about_version_prefix" xml:space="preserve">
+    <value>v</value>
+  </data>
+  <data name="dialog_auto_output_folder_input_err" xml:space="preserve">
+    <value>Input error doesn't exist!</value>
+  </data>
+  <data name="dialog_default_output_exists" xml:space="preserve">
+    <value>Defualt folder exists. An index was added.</value>
+  </data>
+  <data name="dialog_default_output_folder" xml:space="preserve">
+    <value>Processed Images</value>
+  </data>
+  <data name="dialog_default_output_folder_with_index" xml:space="preserve">
+    <value>Processed Images {0}</value>
+  </data>
+  <data name="dialog_release_notes_missing" xml:space="preserve">
+    <value>Unable to locate release notes file</value>
+  </data>
+  <data name="dialog_release_notes_missing_caption" xml:space="preserve">
+    <value>Release Notes Missing</value>
+  </data>
+  <data name="gui_helpToolStripMenuItem" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="gui_releaseNotesToolStripMenuItem" xml:space="preserve">
+    <value>Release Notes</value>
+  </data>
+  <data name="gui_releaseNotesWindow" xml:space="preserve">
+    <value>Release Notes</value>
   </data>
 </root>

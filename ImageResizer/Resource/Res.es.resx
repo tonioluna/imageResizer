@@ -117,13 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="dialog_startButton_cancel" xml:space="preserve">
+  <data name="gui_dialog_startButton_cancel" xml:space="preserve">
     <value>Cancelar</value>
   </data>
-  <data name="dialog_startButton_cancelling" xml:space="preserve">
+  <data name="gui_dialog_startButton_cancelling" xml:space="preserve">
     <value>Cancelando</value>
   </data>
-  <data name="dialog_startButton_start" xml:space="preserve">
+  <data name="gui_dialog_startButton_start" xml:space="preserve">
     <value>Comenzar</value>
   </data>
   <data name="dialog_worker_params_retr_err" xml:space="preserve">
@@ -162,13 +162,85 @@
   <data name="gui_profileLabel" xml:space="preserve">
     <value>Perfil</value>
   </data>
+  <data name="gui_resizeInfoWindow" xml:space="preserve">
+    <value>Información sobre redimensionamiento</value>
+  </data>
+  <data name="gui_resizeMethodsHelpToolStripMenuItem" xml:space="preserve">
+    <value>Ayuda con Métodos de Redimensionamiento</value>
+  </data>
   <data name="gui_showLoggerToolStripMenuItem" xml:space="preserve">
-    <value>Mostrar Logger</value>
+    <value>Mostrar Archivo del Depurador</value>
   </data>
   <data name="gui_toolsToolStripMenuItem" xml:space="preserve">
     <value>Herramientas</value>
   </data>
   <data name="gui_widthLabel" xml:space="preserve">
     <value>Ancho</value>
+  </data>
+  <data name="method_desc_add_fill" xml:space="preserve">
+    <value>Resize image to fit on box keeping aspect ratio and add filling margins to make up required size. Output image will always be the target dimmensions.</value>
+  </data>
+  <data name="method_desc_cut_excess" xml:space="preserve">
+    <value>Resize image keeping aspect ratio until it fully covers the output dimensions. Then excess is trimmed. Output image will always be the target dimmensions.</value>
+  </data>
+  <data name="method_desc_fit_on_box" xml:space="preserve">
+    <value>Resize image to fit box keeping aspect ratio. Output image will be equal or smaller to target dimmensions.</value>
+  </data>
+  <data name="method_desc_stretch_to_box" xml:space="preserve">
+    <value>Resize image to fit box not keeping aspect ratio. Output image will always be the target dimmensions.</value>
+  </data>
+  <data name="method_short_add_fill" xml:space="preserve">
+    <value>Agregar Relleno</value>
+  </data>
+  <data name="method_short_cut_excess" xml:space="preserve">
+    <value>Cortar Exceso</value>
+  </data>
+  <data name="method_short_fit_on_box" xml:space="preserve">
+    <value>Ajustar</value>
+  </data>
+  <data name="method_short_stretch_to_box" xml:space="preserve">
+    <value>Estirar</value>
+  </data>
+  <data name="dialog_about_date_prefix" xml:space="preserve">
+    <value>Compilado en</value>
+  </data>
+  <data name="dialog_about_date_string_format" xml:space="preserve">
+    <value>dd/MM/yyyy HH:mm:ss</value>
+  </data>
+  <data name="dialog_about_publisher_prefix" xml:space="preserve">
+    <value>Por</value>
+  </data>
+  <data name="dialog_about_version_prefix" xml:space="preserve">
+    <value>v</value>
+  </data>
+  <data name="dialog_auto_output_folder_input_err" xml:space="preserve">
+    <value>Folder de entrada no existe</value>
+  </data>
+  <data name="dialog_currImgLabel_canceled" xml:space="preserve">
+    <value>La operación fue cancelada</value>
+  </data>
+  <data name="dialog_default_output_exists" xml:space="preserve">
+    <value>Folder por defecto existe. Indice agregado.</value>
+  </data>
+  <data name="dialog_default_output_folder" xml:space="preserve">
+    <value>Imágenes Procesadas</value>
+  </data>
+  <data name="dialog_default_output_folder_with_index" xml:space="preserve">
+    <value>Imágenes Procesadas {0}</value>
+  </data>
+  <data name="dialog_release_notes_missing" xml:space="preserve">
+    <value>Falla al localizar el archivo de notas de publicación</value>
+  </data>
+  <data name="dialog_release_notes_missing_caption" xml:space="preserve">
+    <value>Faltan Notas de Publicación</value>
+  </data>
+  <data name="gui_helpToolStripMenuItem" xml:space="preserve">
+    <value>Ayuda</value>
+  </data>
+  <data name="gui_releaseNotesToolStripMenuItem" xml:space="preserve">
+    <value>Notas de Publicación (en Inglés)</value>
+  </data>
+  <data name="gui_releaseNotesWindow" xml:space="preserve">
+    <value>Notas de Publicación (Inglés)</value>
   </data>
 </root>

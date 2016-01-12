@@ -13,15 +13,20 @@ namespace ImageResizer
 {
     public class SimpleLogger
     {
-        public SimpleLogger(string filename, LogLevel fileLevel)
+        public SimpleLogger(string base_filename, LogLevel fileLevel)
         {
             this.fileLevel = fileLevel;
             
-            filename = string.Format("{0}.{1}.log", Path.GetFileNameWithoutExtension(filename), Process.GetCurrentProcess().Id);
+            string filename = string.Format("{0}.{1}.log", Path.GetFileNameWithoutExtension(base_filename), Process.GetCurrentProcess().Id);
             string folder_name = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), Application.ProductName);
             if (!Directory.Exists(folder_name))
             {
                 Directory.CreateDirectory(folder_name);
+            }
+            else
+            { 
+                // if folder exists then clean old logs
+                this.clean_old_logs(base_filename, folder_name);
             }
             filename = Path.Combine(folder_name, filename);
             this.log_filename = filename;
@@ -32,6 +37,33 @@ namespace ImageResizer
             string version = fvi.FileVersion;
 
             this.info("Starting application on {0}. Version: {1}.", DateTime.Now.ToLongDateString(), version);
+        }
+
+        /* Remove any logfile older than 24 hrs
+         */
+        void clean_old_logs(string base_filename, string folder)
+        {
+            base_filename = Path.GetFileNameWithoutExtension(base_filename);
+            string [] files = Directory.GetFiles(folder);
+
+            DateTime now = DateTime.Now;
+            TimeSpan ts_24hrs = TimeSpan.FromHours(24.0);
+
+            foreach (string file in files) {
+                string ffile = Path.Combine(folder, file);
+                DateTime last_access = File.GetLastWriteTime(ffile);
+
+                TimeSpan delta = now - last_access;
+
+                if (delta > ts_24hrs)
+                {
+                    try
+                    {
+                        File.Delete(ffile);
+                    }
+                    catch { }
+                }
+            }
         }
 
         public LogLevel fileLevel;
@@ -86,24 +118,33 @@ namespace ImageResizer
 
     public class ResizeMethods
     {
-        public ResizeMethods()
+        public ResizeMethods(mainForm mf)
         {
             this.methods = new List<ResizeMethod>();
-            this.methods.Add(new ResizeMethod(ResizeMethod.Method.add_fill, "Add Fill Margings", "Resize image to fit on box keeping aspect ratio and add filling margings to make up required size. Output image will always be the target dimmensions."));
-            this.methods.Add(new ResizeMethod(ResizeMethod.Method.cut_excess, "Cut Excess", "Resize image keeping aspect ratio until it fully covers the output dimmensions. Then excess is trimmed. Output image will always be the target dimmensions."));
-            this.methods.Add(new ResizeMethod(ResizeMethod.Method.fit_on_box, "Fit on Box", "Resize image to fit box keeping aspect ratio. Output image will be equal or smaller to target dimmensions."));
-            this.methods.Add(new ResizeMethod(ResizeMethod.Method.stretch, "Stretch to Box", "Resize image to fit box not keeping aspect ratio. Output image will always be the target dimmensions."));
+            this.mf = mf;
+            //this.methods.Add(new ResizeMethod(ResizeMethod.Method.add_fill, "add_fill", mf));
+            this.methods.Add(new ResizeMethod(ResizeMethod.Method.cut_excess, "cut_excess", mf));
+            this.methods.Add(new ResizeMethod(ResizeMethod.Method.fit_on_box, "fit_on_box", mf));
+            this.methods.Add(new ResizeMethod(ResizeMethod.Method.stretch, "stretch_to_box", mf));
         }
         public List<ResizeMethod> methods;
+        private mainForm mf;
     }
 
     public class ResizeMethod
     {
-        public ResizeMethod(Method method, string short_name, string desc)
+        public ResizeMethod(Method method, string id, mainForm mf)
         {
             this.method = method;
-            this.short_name = short_name;
-            this.description = desc;
+            this.id = id;
+            this.mf = mf;
+            this.reload_translation();
+        }
+
+        public void reload_translation()
+        {
+            this.short_name = this.mf.get_lang_string(string.Format("method_short_{0}", this.id));
+            this.description = this.mf.get_lang_string(string.Format("method_desc_{0}", this.id));
         }
 
         public override string ToString()
@@ -114,6 +155,8 @@ namespace ImageResizer
         public Method method;
         public string short_name;
         public string description;
+        public string id;
+        private mainForm mf;
 
         public enum Method
         {
@@ -130,8 +173,8 @@ namespace ImageResizer
         {
             // Load static profiles
             this.profiles = new List<Profile>();
-            this.profiles.Add(new Profile("Digital Frame", ResizeMethod.Method.fit_on_box, 1024, 768, true));
-            this.profiles.Add(new Profile("Full HD", ResizeMethod.Method.cut_excess, 1920, 1080, true));
+            this.profiles.Add(new Profile("eMotion Digital Frame", ResizeMethod.Method.fit_on_box, 800, 600, true));
+            this.profiles.Add(new Profile("Full HD", ResizeMethod.Method.fit_on_box, 1920, 1080, true));
 
             // TODO: support loading external profiles
 
@@ -206,14 +249,32 @@ namespace ImageResizer
             : base(mf)
         {
             this.control = control;
+            this.alternate_source = null;
         }
+        public TGI_Control(mainForm mf, Control control, string alternate_source)
+            : base(mf)
+        {
+            this.control = control;
+            this.alternate_source = alternate_source;
+        }
+
         Control control;
+        string alternate_source;
 
         public override void reload_text()
         {
-            string strn = this.mf.resourceManager.GetString(string.Format("gui_{0}", this.control.Name), this.mf.culture);
-            this.mf.log.debug("Set Control text for '{0}': '{1}'", this.control.Name, strn);
-            this.control.Text = "*" + strn;
+            string strn;
+            if (alternate_source != null)
+            {
+                strn = this.mf.get_lang_string(string.Format("gui_{0}", this.alternate_source));
+                this.mf.log.debug("Set Control text for '{0}' with alternate source '{2}': '{1}'", this.control.Name, strn, this.alternate_source);
+            }
+            else
+            {
+                strn = this.mf.get_lang_string(string.Format("gui_{0}", this.control.Name));
+                this.mf.log.debug("Set Control text for '{0}': '{1}'", this.control.Name, strn);
+            }
+            this.control.Text = strn;
         }
     }
 
@@ -227,9 +288,10 @@ namespace ImageResizer
         ToolStripMenuItem tsmi;
         public override void reload_text()
         {
-            string strn = this.mf.resourceManager.GetString(string.Format("gui_{0}", this.tsmi.Name), this.mf.culture);
+            //string strn = this.mf.resourceManager.GetString(string.Format("gui_{0}", this.tsmi.Name), this.mf.culture);
+            string strn = this.mf.get_lang_string(string.Format("gui_{0}", this.tsmi.Name));
             this.mf.log.debug("Set Menu Item text for '{0}': '{1}'", this.tsmi.Name, strn);
-            this.tsmi.Text = "*" + strn;
+            this.tsmi.Text = strn;
         }
     }
 

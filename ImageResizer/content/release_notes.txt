@@ -1,0 +1,7 @@
+﻿0.1.0
+	Jan 11 2016
+	
+	Initial Release of the tool.
+	Most basic features have been checked to be operational. No extensive
+	validation has been done. This release is meant to perform such testing
+	and start exploring on additional required features or changes.		

@@ -12,7 +12,7 @@
     <AssemblyName>ImageResizer</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ApplicationIcon>ImageResizer.icon.v4.ico</ApplicationIcon>
+    <ApplicationIcon>content\icon.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -50,7 +51,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="classes.cs">
+    </Compile>
+    <Compile Include="gui.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="mainForm.cs">
       <SubType>Form</SubType>
@@ -60,6 +70,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AboutForm.resx">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Resource\Res.es.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Res.es.Designer.cs</LastGenOutput>
@@ -77,6 +91,10 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TextShower.resx">
+      <DependentUpon>TextShower.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
@@ -104,11 +122,22 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Res.en.resx</DependentUpon>
     </Compile>
+    <Compile Include="background.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextShower.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TextShower.Designer.cs">
+      <DependentUpon>TextShower.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ImageResizer.icon.v1.ico" />
-    <Content Include="ImageResizer.icon.v3.ico" />
-    <Content Include="ImageResizer.icon.v4.ico" />
+    <Content Include="content\icon.ico" />
+    <Content Include="content\release_notes.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Resources\ImageResizer.icon.v5.150px.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
