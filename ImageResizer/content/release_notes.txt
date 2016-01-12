@@ -1,4 +1,10 @@
-﻿0.1.1
+﻿0.1.2
+	Jan 12 2016
+	
+	Adding installer output also for x86. There will be two separated 
+	installers, one for x86 and one for x64.
+	
+0.1.1
 	Jan 12 2016
 	
 	A few basic fixes from 0.1.0. No major changes.

@@ -5,19 +5,37 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageResizer", "ImageResize
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ImageResizerInstaller", "ImageResizerInstaller\ImageResizerInstaller.vdproj", "{D18A1E15-A04A-4D0D-A26A-95D87C405C8C}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ImageResizerInstaller_x86", "ImageResizerInstaller_x86\ImageResizerInstaller_x86.vdproj", "{691C8CD5-C6BF-445D-A312-9E7526C4178B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Installer|Any CPU = Installer|Any CPU
+		Release|Any CPU = Release|Any CPU
 		Testing|Any CPU = Testing|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D2B7F4B-82EA-4363-8459-D6C7ABE378AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D2B7F4B-82EA-4363-8459-D6C7ABE378AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D2B7F4B-82EA-4363-8459-D6C7ABE378AC}.Installer|Any CPU.ActiveCfg = Release|Any CPU
 		{7D2B7F4B-82EA-4363-8459-D6C7ABE378AC}.Installer|Any CPU.Build.0 = Release|Any CPU
+		{7D2B7F4B-82EA-4363-8459-D6C7ABE378AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D2B7F4B-82EA-4363-8459-D6C7ABE378AC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7D2B7F4B-82EA-4363-8459-D6C7ABE378AC}.Testing|Any CPU.ActiveCfg = Debug|Any CPU
 		{7D2B7F4B-82EA-4363-8459-D6C7ABE378AC}.Testing|Any CPU.Build.0 = Debug|Any CPU
+		{D18A1E15-A04A-4D0D-A26A-95D87C405C8C}.Debug|Any CPU.ActiveCfg = Debug
 		{D18A1E15-A04A-4D0D-A26A-95D87C405C8C}.Installer|Any CPU.ActiveCfg = Release
 		{D18A1E15-A04A-4D0D-A26A-95D87C405C8C}.Installer|Any CPU.Build.0 = Release
+		{D18A1E15-A04A-4D0D-A26A-95D87C405C8C}.Release|Any CPU.ActiveCfg = Release
+		{D18A1E15-A04A-4D0D-A26A-95D87C405C8C}.Release|Any CPU.Build.0 = Release
 		{D18A1E15-A04A-4D0D-A26A-95D87C405C8C}.Testing|Any CPU.ActiveCfg = Debug
+		{691C8CD5-C6BF-445D-A312-9E7526C4178B}.Debug|Any CPU.ActiveCfg = Debug
+		{691C8CD5-C6BF-445D-A312-9E7526C4178B}.Installer|Any CPU.ActiveCfg = Release
+		{691C8CD5-C6BF-445D-A312-9E7526C4178B}.Installer|Any CPU.Build.0 = Release
+		{691C8CD5-C6BF-445D-A312-9E7526C4178B}.Release|Any CPU.ActiveCfg = Release
+		{691C8CD5-C6BF-445D-A312-9E7526C4178B}.Release|Any CPU.Build.0 = Release
+		{691C8CD5-C6BF-445D-A312-9E7526C4178B}.Testing|Any CPU.ActiveCfg = Release
+		{691C8CD5-C6BF-445D-A312-9E7526C4178B}.Testing|Any CPU.Build.0 = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
